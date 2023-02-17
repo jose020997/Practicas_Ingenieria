@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" th:href="/@{/bootstrap.min.css}">
 <meta charset="UTF-8">
-<title>Pagina ChupiGuay</title>
+<title>Practica1_Formulario</title>
 </head>
 <body>
-Este es nuestro Index
+
+<p>Vamos a realizar un formulario</p>
+
+	<form action "datos" methos="post">
+		Email:<br> <input type="email" name="email" required><br>
+		Nombre:<br> <input type="text" name="nombre" required><br><br>
+	<input type=submit value=Enviar>
+	
+	</form>
+
 </body>
 </html>

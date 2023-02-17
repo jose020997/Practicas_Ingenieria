@@ -11,5 +11,10 @@ public class HomeController {
 	public String metodoinicio() {
 		return "index";
 	}
+	
+	@GetMapping(value="/usuario")
+	public String devolverdatos() {
+		return "datos";
+	}
 // Se guardan los cambios
 }
