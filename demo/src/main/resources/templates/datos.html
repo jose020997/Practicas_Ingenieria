@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmls:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Practica1_Formulario</title>
 </head>
 <body>
-<p>Hola prueba prueba</p>
-
+<p>Nombre del tontito del formulario</p>
+<p>maquinote: <span th:text="${usuario.nombre}"</span></p>
+<p>Correo del maquinote: <span th:text="${usuario.email}"></span></p>
 </body>
 </html>

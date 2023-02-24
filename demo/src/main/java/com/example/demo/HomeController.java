@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 // error en la sintaxis, click izquierdo para las sugerencias (En este caso era el Import)
 @Controller
@@ -23,9 +24,11 @@ public class HomeController {
 	
 	@PostMapping(value="/datos")
 	public String metodo(HttpServletRequest req, Model model) {
+		HttpSession sesion = req.getSession();
+		//Se hace el request que es el que responde a las sesiones
 		String email = req.getParameter("email");
 		String nombre = req.getParameter("nombre");
-		System.out.println(email+" "+nombre);
+		//	System.out.println(email+" "+nombre);
 		Usuario usuario = new Usuario(nombre,email);
 		model.addAttribute("usuario", usuario);
 		return "datos";
