@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 // error en la sintaxis, click izquierdo para las sugerencias (En este caso era el Import)
@@ -19,10 +21,10 @@ public class HomeController {
 	
 	@GetMapping(value="/datos")
 	public String verUsuario(Model model,HttpSession sesion,HttpServletRequest request) {
+		//Comprueba si tiene una cookie permamente o sino la tiene el codigo de abajo
 		HttpSession session = request.getSession(true);
 		boolean mensaje;
 		Usuario user = (Usuario) sesion.getAttribute("usuario");
-		 
 		if(user != null) {
 			model.addAttribute("usuario", user);
 		 	System.out.println(model);
@@ -55,5 +57,16 @@ public class HomeController {
 		return "datos";
 		
 	}
+	@PostMapping(value="/Guardar_datos")
+	public String guardar(HttpServletResponse response) {
+		Cookie c = new Cookie("userIdCookie", user);
+		c.setMaxAge(60*60*24*7); //7dias
+		c.setPath("/");
+		response.addCookie(c);
+		
+		
+		return "datos";
+	}
+	
 // Se guardan los cambios
 }

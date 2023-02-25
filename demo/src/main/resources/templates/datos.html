@@ -5,13 +5,15 @@
 <title>Practica1_Formulario</title>
 </head>
 <body>
-<p>Nombre del tontito del formulario</p>
-<p>maquinote: 
+<p>Datos del formulario</p>
+<p>Usuario: 
 	<th:block th:if="${mensaje}">
    		<span ${user.nombre}></span>
 	</th:block>
 		No existen datos de usuario
 </p>
-<p>Correo del maquinote: <span ${user.email}></span> </p>
+<th:block th:if="${mensaje && mensaje}">
+   		<input type=submit value=Guardar_Datos>
+	</th:block>
 </body>
 </html>
