@@ -6,7 +6,12 @@
 </head>
 <body>
 <p>Nombre del tontito del formulario</p>
-<p>maquinote: <span th:text="${usuario.nombre}"</span></p>
-<p>Correo del maquinote: <span th:text="${usuario.email}"></span></p>
+<p>maquinote: 
+	<th:block th:if="${mensaje}">
+   		<span ${user.nombre}></span>
+	</th:block>
+		No existen datos de usuario
+</p>
+<p>Correo del maquinote: <span ${user.email}></span> </p>
 </body>
 </html>
