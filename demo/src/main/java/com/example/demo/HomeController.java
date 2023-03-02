@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,25 +15,26 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class HomeController {
 
-	@GetMapping(value="/inicio")
+	@GetMapping("/inicio")
 	public String metodoinicio() {
-		return "index";
+		return "redirect:/";
 	}
 	
-	@GetMapping(value="/datos")
+	@GetMapping("/datos")
 	public String verUsuario(Model model,HttpSession sesion,HttpServletRequest request) {
 		//Comprueba si tiene una cookie permamente o sino la tiene el codigo de abajo
 		HttpSession session = request.getSession(true);
 		boolean mensaje;
 		Usuario user = (Usuario) sesion.getAttribute("usuario");
-		if(user != null) {
+		System.out.println("nombre"+ user.getNombre());
+		/*if(user != null) {
 			model.addAttribute("usuario", user);
 		 	System.out.println(model);
 		 	mensaje=false;
 		}
 		else {
 			mensaje=true;
-		}
+		}*/
 		return "datos";
 	}
 	
@@ -47,17 +49,13 @@ public class HomeController {
 			
 		Usuario usuario = new Usuario(nombre,email);
 		//Creamos un javabean de usuario con los datos rescatados de la sesion
-		System.out.println(nombre);
-		System.out.println(email);
-		System.out.println(usuario);
 		
 		sesion.setAttribute("usuario", usuario);
 		//guardamos en la sesion el datos usuario
-		System.out.println(sesion);
 		return "datos";
 		
 	}
-	@PostMapping(value="/Guardar_datos")
+	/*@PostMapping(value="/Guardar_datos")
 	public String guardar(HttpServletResponse response) {
 		Cookie c = new Cookie("userIdCookie", user);
 		c.setMaxAge(60*60*24*7); //7dias
@@ -66,7 +64,7 @@ public class HomeController {
 		
 		
 		return "datos";
-	}
+	}*/
 	
 // Se guardan los cambios
 }
