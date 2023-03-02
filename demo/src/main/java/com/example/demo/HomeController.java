@@ -26,15 +26,10 @@ public class HomeController {
 		HttpSession session = request.getSession(true);
 		boolean mensaje;
 		Usuario user = (Usuario) sesion.getAttribute("usuario");
-		System.out.println("nombre"+ user.getNombre());
-		/*if(user != null) {
-			model.addAttribute("usuario", user);
-		 	System.out.println(model);
-		 	mensaje=false;
-		}
-		else {
-			mensaje=true;
-		}*/
+		System.out.println(user.getNombre());
+		model.addAttribute("usuario",user.getNombre());
+		System.out.println(model);
+
 		return "datos";
 	}
 	
