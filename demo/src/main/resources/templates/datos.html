@@ -6,12 +6,8 @@
 </head>
 <body>
 <p>Datos del formulario</p>
-<p>Usuario: </p>
-<p th:if="${usuario != null}">
-    <span th:text="${usuario}"></span>
-</p>
-<p th:else>
-	Sin datos anteriores</p>
+<p th:text="'Usuario: ' + ${usuario.getNombre()}"></p>
+<p th:text="'Correo: ' + ${usuario.getEmail()}"></p>
 
 
 </body>

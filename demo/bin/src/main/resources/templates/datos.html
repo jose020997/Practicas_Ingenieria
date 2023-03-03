@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmls:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Practica1_Formulario</title>
 </head>
 <body>
-<p>Hola prueba prueba</p>
+<p>Datos del formulario</p>
+<p>Usuario: </p>
+<p th:if="${usuario != null}">
+    <span th:text="${usuario}"></span>
+</p>
+<p th:else>
+	Sin datos anteriores</p>
+
 
 </body>
 </html>

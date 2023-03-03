@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -26,40 +26,57 @@ public class HomeController {
 		HttpSession session = request.getSession(true);
 		boolean mensaje;
 		Usuario user = (Usuario) sesion.getAttribute("usuario");
-		System.out.println(user.getNombre());
-		model.addAttribute("usuario",user.getNombre());
-		System.out.println(model);
-
-		return "datos";
+		if(user != null) {
+			model.addAttribute("usuario",user);
+			return "datos";
+		}
+		else {
+			return "index";
+		}
 	}
 	
 	@PostMapping(value="/datos")
-	public String metodo(HttpServletRequest req, Model model) {
+	public String metodo(@RequestParam("button") String buttonValue, HttpServletRequest req, Model model, HttpServletResponse response) {
 		HttpSession sesion = req.getSession();
 		//Se hace el request que es el que responde a las sesiones cookies
-		
-			String email = req.getParameter("email");
-			String nombre = req.getParameter("nombre");
-			//Guardamos los datos en un string que rescatamos de la sesion http
+		String email = req.getParameter("email");
+		String nombre = req.getParameter("nombre");
+		//Guardamos los datos en un string que rescatamos de la sesion http
 			
 		Usuario usuario = new Usuario(nombre,email);
 		//Creamos un javabean de usuario con los datos rescatados de la sesion
 		
-		sesion.setAttribute("usuario", usuario);
-		//guardamos en la sesion el datos usuario
-		return "datos";
 		
+		if(buttonValue.equals("Cargar")) {
+			String userId = email;
+			String nomId = nombre;
+			Cookie usu = new Cookie("userId", userId);
+			Cookie nom = new Cookie("nombreid",nomId);
+			usu.setMaxAge(60*60*24*7);
+			nom.setMaxAge(60*60*24*7);
+			usu.setPath("/");
+			nom.setPath("/");
+			//Mandamos a todo lo que esté en la raiz
+			response.addCookie(usu);
+			response.addCookie(nom);
+			//Carga la proxima vez que se lancen
+
+			return "datos";
+		}
+		else {
+			
+			sesion.setAttribute("usuario", usuario);
+			//guardamos en la sesion el datos usuario
+			model.addAttribute("usuario",usuario);
+			//añadimos al modelo para poder mostrar en el thymeleaf
+			
+			return "datos";
+		}
 	}
-	/*@PostMapping(value="/Guardar_datos")
-	public String guardar(HttpServletResponse response) {
-		Cookie c = new Cookie("userIdCookie", user);
-		c.setMaxAge(60*60*24*7); //7dias
-		c.setPath("/");
-		response.addCookie(c);
-		
-		
-		return "datos";
-	}*/
-	
-// Se guardan los cambios
 }
+
+
+/* Uusario Interface
+ * public boolean checkUusario(String usuario,sting passw);
+ * para comparar usamos el .equals */
+
