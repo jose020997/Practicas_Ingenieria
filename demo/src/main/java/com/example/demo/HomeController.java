@@ -31,8 +31,21 @@ public class HomeController {
 			return "datos";
 		}
 		else {
-			return "index";
+			Cookie[ ] cookies = request.getCookies( );
+			String emailcoki = "";
+			String nombrecoki = "";
+			if (cookies != null){
+				for (Cookie cookie: cookies){
+					if (cookie.getName().equals("userId")) emailcoki = cookie.getValue();
+					if (cookie.getName().equals("nombreid")) nombrecoki = cookie.getValue();
+					//COmprobar en el datos que si no existe cookie haga una cosa y sino otra
+				}
+			}
+			else {
+				return "index";
+			}
 		}
+		return "datos";
 	}
 	
 	@PostMapping(value="/datos")
