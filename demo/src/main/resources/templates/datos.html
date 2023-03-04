@@ -6,9 +6,9 @@
 </head>
 <body>
 <p>Datos del formulario</p>
+<th:block th:if="${usuario != null}">
 <p th:text="'Usuario: ' + ${usuario.getNombre()}"></p>
-<p th:text="'Correo: ' + ${usuario.getEmail()}"></p>
-
-
+<p th:text="'Correo: ' + ${usuario.getEmail()}"></p>	
+</th:block>
 </body>
 </html>
