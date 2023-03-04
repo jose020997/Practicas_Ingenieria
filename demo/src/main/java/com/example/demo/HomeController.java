@@ -15,78 +15,70 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class HomeController {
 
-	@GetMapping("/inicio")
-	public String metodoinicio() {
-		return "redirect:/";
-	}
-	
-	@GetMapping("/datos")
-	public String verUsuario(Model model,HttpSession sesion,HttpServletRequest request) {
-		//Comprueba si tiene una cookie permamente o sino la tiene el codigo de abajo
-		HttpSession session = request.getSession(true);
-		Usuario user = (Usuario) sesion.getAttribute("usuario");
-		if(user == null) {
-			Cookie[ ] cookies = request.getCookies( );
-			String emailcoki = "";
-			String nombrecoki = "";
-			if(cookies != null) {
-				for (Cookie cookie: cookies){
-					if (cookie.getName().equals("userId")) emailcoki = cookie.getValue();
-					if (cookie.getName().equals("nombreid")) nombrecoki = cookie.getValue();
-				}	
-			}
-			if (nombrecoki.equals("") &&  emailcoki.equals("")){
-				if(user != null) {
-					model.addAttribute("usuario",user);
-					return "datos";
-				}
-				else {
-					return "index";
-				}
-			}
-		}
-		return "datos";
-	}
-	
-	@PostMapping(value="/datos")
-	public String metodo(@RequestParam(required = false) String button, HttpServletRequest req, Model model, HttpServletResponse response) {
-		HttpSession sesion = req.getSession();
-		//Se hace el request que es el que responde a las sesiones cookies
-		String email = req.getParameter("email");
-		String nombre = req.getParameter("nombre");
-		//Guardamos los datos en un string que rescatamos de la sesion http
-			
-		Usuario usuario = new Usuario(nombre,email);
-		//Creamos un javabean de usuario con los datos rescatados de la sesion
-		
-			if (button != null && button.equals("Cargar")) {
-				String userId = email;
-				String nomId = nombre;
-				Cookie usu = new Cookie("userId", userId);
-				Cookie nom = new Cookie("nombreid",nomId);
-				usu.setMaxAge(60*60*24*7);
-				nom.setMaxAge(60*60*24*7);
-				usu.setPath("/");
-				nom.setPath("/");
-				//Mandamos a todo lo que esté en la raiz
-				response.addCookie(usu);
-				response.addCookie(nom);
-				//Carga la proxima vez que se lancen
-	
-				return "datos";
-			}
-		
-			else {
-			sesion.setAttribute("usuario", usuario);
-			//guardamos en la sesion el datos usuario
-			model.addAttribute("usuario",usuario);
-			//añadimos al modelo para poder mostrar en el thymeleaf
-			
-			return "datos";
-			}
-	}
-}
+    @GetMapping("/inicio")
+    public String metodoinicio() {
+        return "redirect:/";
+    }
 
+    @GetMapping("/datos")
+    public String verUsuario(Model model, HttpSession sesion, HttpServletRequest request) {
+        Usuario user = (Usuario) sesion.getAttribute("usuario");
+        if (user == null) {
+            Cookie[] cookies = request.getCookies();
+            String emailcoki = null;
+            String nombrecoki = null;
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("userId")) {
+                        emailcoki = cookie.getValue();
+                    }
+                    if (cookie.getName().equals("nombreid")) {
+                        nombrecoki = cookie.getValue();
+                    }
+                }
+            }
+            if (nombrecoki != null && emailcoki != null) {
+                user = new Usuario(nombrecoki, emailcoki);
+                model.addAttribute("nombrecoki",nombrecoki);
+                model.addAttribute("emailcoki",emailcoki);
+            } else {
+                return "index";
+            }
+        }
+        model.addAttribute("usuario", user);
+        return "datos";
+    }
+
+
+    @PostMapping(value = "/datos")
+    public String metodo(@RequestParam(required = false) String button, HttpServletRequest req, Model model, HttpServletResponse response) {
+        HttpSession sesion = req.getSession();
+        String email = req.getParameter("email");
+        String nombre = req.getParameter("nombre");
+
+        Usuario usuario = new Usuario(nombre, email);
+
+        if (button != null && button.equals("Cargar")) {
+            String userId = email.replaceAll("\\s+","");
+            String nomId = nombre.replaceAll("\\s+","");
+            Cookie usu = new Cookie("userId", userId);
+            Cookie nom = new Cookie("nombreid", nomId);
+            usu.setMaxAge(60 * 60 * 24 * 7);
+            nom.setMaxAge(60 * 60 * 24 * 7);
+            usu.setPath("/");
+            nom.setPath("/");
+            response.addCookie(usu);
+            response.addCookie(nom);
+
+            return "datos";
+        } else {
+            sesion.setAttribute("usuario", usuario);
+            model.addAttribute("usuario", usuario);
+
+            return "datos";
+        }
+    }
+}
 
 /* Uusario Interface
  * public boolean checkUusario(String usuario,sting passw);
