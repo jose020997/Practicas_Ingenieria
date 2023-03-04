@@ -19,6 +19,11 @@ public class HomeController {
     public String metodoinicio() {
         return "redirect:/";
     }
+    
+    @GetMapping("/form")
+    public String mostrarFormulario() {
+        return "form";
+    }
 
     @GetMapping("/datos")
     public String verUsuario(Model model, HttpSession sesion, HttpServletRequest request) {
@@ -42,7 +47,7 @@ public class HomeController {
                 model.addAttribute("nombrecoki",nombrecoki);
                 model.addAttribute("emailcoki",emailcoki);
             } else {
-                return "index";
+                return "form";
             }
         }
         model.addAttribute("usuario", user);
@@ -69,6 +74,8 @@ public class HomeController {
             nom.setPath("/");
             response.addCookie(usu);
             response.addCookie(nom);
+            model.addAttribute("userId",userId);
+            model.addAttribute("nombreid",nomId);
 
             return "datos";
         } else {
