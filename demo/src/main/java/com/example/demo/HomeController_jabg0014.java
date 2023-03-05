@@ -47,7 +47,7 @@ public class HomeController_jabg0014 {
 			                // Aquí deberías agregar el código para mostrar la lista de artículos
 			                return "articulos";
 			            } else {
-			                model.addAttribute("FAIL", "User not exists");
+			            	
 			                return "login";
 			            }
 		        }
