@@ -13,8 +13,16 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class HomeController_jabg0014 {
 	
+	@GetMapping("/registro.html")
+	public String mover() {
+		return "registro";
+	}
+	
 	@GetMapping("/login")
     public String mostrarlogin(Model model, HttpServletRequest req,HttpSession sess) {
+		DAO_jabg0014 dao = new DAO_jabg0014();
+	    List<Userlogin> userdao = dao.getAllUsers();
+	    
 		String user = (String) sess.getAttribute("nam_user");
 		System.out.println(user);
 		//falta hacer que si las sesion tiene root o carga la variable pues se hace de otra manera
@@ -22,6 +30,8 @@ public class HomeController_jabg0014 {
 			//hacemos que si el user que recatamos del lado anterior sea distinto de nulo por lo cual ya estaba registrado ponga el nombre
 			if(user.equals("root")) {
 				//si es root pues accedemos a la interfaz de root
+				model.addAttribute("lista_usuarios", dao.getAllUsers());
+				model.addAttribute("nombre",user);
 				return "admin";
 			}
 			else {

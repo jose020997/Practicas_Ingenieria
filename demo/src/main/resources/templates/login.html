@@ -16,6 +16,7 @@
 				<div class="col-md-6">
 					<p><!-- Formulario --></p>
 					<h1>Formulario de login</h1>
+					<br>
 	
 					<form action="login" method="post">
 						Name:<br> <input type="text" name="name" required><br><br>
@@ -27,24 +28,63 @@
 					<th:block th:if="${exist == false}">
 						<div class="alert alert-dismissible alert-danger">
 						  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-						  <strong>Usuario no registrado</strong>.
+						  <strong>Usuario no registrado!</strong><a th:href="@{/registro.html}" class="alert-link">     Si quiere registrarse pinche aqui!</a>
 						</div>
 					</th:block>
 				</div>
 				<div class="col-md-6">
 				<p><!-- Texto por defecto --></p>
 					<h1>Datos random interesantes</h1>
-					<p>Los aguacates son una fruta, no una verdura. Técnicamente se consideran una baya de una sola semilla, lo creas o no.
+					<br>
+					<p class="text-success" >Los aguacates son una fruta, no una verdura. Técnicamente se consideran una baya de una sola semilla, lo creas o no.
 						La Torre Eiffel puede ser 15 cm más alta durante el verano. Todo tiene una explicación, se debe a la expansión térmica que significa que el hierro se calienta, las partículas ganan energía cinética y ocupan más espacio.
 						La tripofobia es el miedo a los agujeros muy juntos. O más específicamente, "una aversión a la vista de patrones irregulares o grupos de pequeños agujeros o protuberancias".
 						Australia es más ancha que la Luna. La Luna tiene 3400 km de diámetro, mientras que el diámetro de Australia de este a oeste es de casi 4000 km.
-						'Melifluo' es un sonido que resulta agradablemente suave y musical al escucharlo.
+						'Melifluo' es un sonido que resulta agradablemente suave y musical al escucharlo.</p>
+					<p class="text-warning">
 						Las Spice Girls se llamaban originalmente Touch. "Cuando empezamos [con el nombre Touch], éramos bastante sosas", dijo Mel C a The Guardian en 2018. "Sentíamos que teníamos que encajar en un molde".
 						Los dientes humanos son la única parte del cuerpo que no puede curarse por sí misma. Los dientes están recubiertos de esmalte, que no es un tejido vivo.
 						En Suiza es ilegal tener una sola cobaya.
 					</p>
-				</div>
+					
+					
+					
+					
+					
+					        </div>
+						    </div>
+						 <div class="container">
+						        <div class="row">
+						        <div class="col-md-4">
+						                <br>
+						                <br>
+						                <p class="text-primary"><small>Para cualquier duda puede consultar en nuestro  <a href="mailto:jabg0014@red.ujaen.es">correo</a>
+						                Creado por Jose Antonio Barrios García</small></p>
+						                
+						            </div>
+						            
+						            <div class="col-md-6">
+						                <br>
+						                <br>
+						                
+						            </div>
+						            <div class="col-md-2">
+						                <br>
+						                <br>
+						                <br>
+						                <p class="text-primary"><a href="https://github.com/jose020997">Para acceder al Github</a></p>
+						            </div>
+						    </div>
+						</div>
+					
+					
+					
+					
+					
+					
+			<!--
+			<?php include("template\pie.php"); ?>	
 			</div>
-		</div>
-	</body>
-</html>
+			</div>
+		</body>
+		</html> -->

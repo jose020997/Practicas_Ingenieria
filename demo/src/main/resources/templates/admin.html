@@ -8,10 +8,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="text-center">Admin Dashboard</h1>
+            <br>
+                <h1 class="text-center">Lista de User</h1>
+                <br>
                 <table class="table">
                     <thead>
-                        <tr>
+                        <tr class="table-primary">
                             <th>Username</th>
                             <th>Name</th>
                         </tr>
@@ -23,10 +25,16 @@
                         </tr>
                     </tbody>
                 </table>
+                <br><br><br>
             </div>
             <div class="col-md-6">
+            <br>
                 <h1 class="text-center">Otra parte para algo</h1>
-                <!-- Here you can add other content for the admin dashboard -->
+                <br>
+                <!-- Porque es una tabla muy grande -->
+                <th:block th:if="${nombre != null}">
+                	<p  class="text-warning" th:text="${'la cuenta que usas para acceder es : '+ nombre}"></p>
+                </th:block>
             </div>
         </div>
     </div>
