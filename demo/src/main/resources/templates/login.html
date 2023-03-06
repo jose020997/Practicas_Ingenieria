@@ -4,6 +4,11 @@
 		<meta charset="UTF-8">
 		<title>My page</title>
 		<link rel="stylesheet" href="/bootstrap.min.css">
+		  <style>
+		    body {
+		      background-color: #f8f9fa;
+		    }
+		  </style>
 	</head>
 	<body>
 		<div class="container">
@@ -15,9 +20,16 @@
 					<form action="login" method="post">
 						Name:<br> <input type="text" name="name" required><br><br>
 						Password:<br> <input type="password" name="pass" required><br><br>
-						<input type=submit value=Enviar>
+						<input type=submit class="btn btn-info" value=Enviar>
 
 					</form>
+					<br>
+					<th:block th:if="${exist == false}">
+						<div class="alert alert-dismissible alert-danger">
+						  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+						  <strong>Usuario no registrado</strong>.
+						</div>
+					</th:block>
 				</div>
 				<div class="col-md-6">
 				<p><!-- Texto por defecto --></p>

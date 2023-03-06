@@ -1,9 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Lista de artículos</title>
+    <title>User List</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
 </head>
 <body>
-	<h2>Panel del admin</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="text-center">Admin Dashboard</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user : ${lista_usuarios}">
+                            <td th:text="${user.getNombre()}"></td>
+                            <td th:text="${user.getPass()}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h1 class="text-center">Otra parte para algo</h1>
+                <!-- Here you can add other content for the admin dashboard -->
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+

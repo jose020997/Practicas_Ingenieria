@@ -3,16 +3,26 @@
 <head>
 	<title>Tienda Online</title>
 	<link rel="stylesheet" href="/bootstrap.min.css">
+	<!-- https://bootswatch.com/vapor/ -->
 </head>
 <body>
 <br>
-<h1>Jabg_0014 Shop<h1>
-<br>
 <div class="container">
   <div class="row">
+  
+   	<div class="col-md-4"></div>
+   	<div class="col-md-6">
+   			<th:block th:if="${usuario != null}">
+   					<p class="text-secondary" th:text="'Bienvenido: ' + ${usuario}"></p>
+   			</th:block>
+   	</div>
+	 <div class="col-md-2">
+	 	<p class="text-info">Jabg_0014 Shop</p>
+	 </div>
+	 
     <div class="col-md-4">
       <div class="card">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+        <img src="/img/t1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Producto 1</h5>
           <p class="card-text">Descripción del producto 1.</p>
@@ -22,7 +32,7 @@
     </div>
     <div class="col-md-4">
       <div class="card">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+        <img src="/img/t1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Producto 2</h5>
           <p class="card-text">Descripción del producto 2.</p>
@@ -32,7 +42,7 @@
     </div>
     <div class="col-md-4">
       <div class="card">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+        <img src="/img/t1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Producto 3</h5>
           <p class="card-text">Descripción del producto 3.</p>
@@ -46,7 +56,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="card">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+        <img src="/img/t1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Producto 4</h5>
           <p class="card-text">Descripción del producto 4.</p>
@@ -56,7 +66,7 @@
     </div>
     <div class="col-md-4">
       <div class="card">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+        <img src="/img/t1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Producto 5</h5>
           <p class="card-text">Descripción del producto 5.</p>
@@ -66,7 +76,7 @@
     </div>
     <div class="col-md-4">
       <div class="card">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+        <img src="/img/t1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Producto 6</h5>
           <p class="card-text">Descripción del producto 6.</p>

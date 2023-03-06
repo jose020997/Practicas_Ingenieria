@@ -5,6 +5,7 @@ import java.util.List;
 
 public class DAO_jabg0014 {
     private List<Userlogin> users;
+    private boolean isAdmin;
 
     public DAO_jabg0014() {
         // Initialize the list of users in the constructor
@@ -15,6 +16,7 @@ public class DAO_jabg0014 {
         users.add(new Userlogin("Ana", "password4"));
         users.add(new Userlogin("Luis", "password5"));
         users.add(new Userlogin("123", "123"));
+        isAdmin = false;
     }
 
     public List<Userlogin> getAllUsers() {
@@ -24,4 +26,15 @@ public class DAO_jabg0014 {
     public void addUser(Userlogin user) {
         users.add(user);
     }
+    public boolean checkuser(String username,String pass) {
+    	
+    	if(username.equals("root")&& pass.equals("root")) {
+    		isAdmin=true;
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    }
+   
 }
