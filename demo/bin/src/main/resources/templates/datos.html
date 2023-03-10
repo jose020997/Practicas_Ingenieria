@@ -6,13 +6,11 @@
 </head>
 <body>
 <p>Datos del formulario</p>
-<p>Usuario: </p>
-<p th:if="${usuario != null}">
-    <span th:text="${usuario}"></span>
-</p>
-<p th:else>
-	Sin datos anteriores</p>
-
-
+<th:block th:if="${usuario != null}">
+<p th:text="'Usuario: ' + ${usuario.getNombre()}"></p>
+<p th:text="'Correo: ' + ${usuario.getEmail()}"></p>	
+</th:block>
+<p th:text="'Correo cookie: ' + ${userId}"></p>
+<p th:text="'Nombre cookie: ' + ${nombreid}"></p>
 </body>
 </html>

@@ -6,12 +6,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
+
 @Controller
 public class HomeController_jabg0014 {
+	
+	@Autowired
+	private ServicioJabg0014Interface dao;
 	
 	@GetMapping("/registro.html")
 	public String mover() {
@@ -20,7 +25,7 @@ public class HomeController_jabg0014 {
 	
 	@GetMapping("/login")
     public String mostrarlogin(Model model, HttpServletRequest req,HttpSession sess) {
-		DAO_jabg0014 dao = new DAO_jabg0014();
+		//DAO_jabg0014 dao = new DAO_jabg0014();
 	    List<Userlogin> userdao = dao.getAllUsers();
 	    
 		String user = (String) sess.getAttribute("nam_user");

@@ -1,3 +1,4 @@
+//ES EL CONTROLLER DE LA PRACTICA DE LAS COOKIES SOLO LO HEMOS USADO PARA LA PRIMERA SESIÓN
 package com.example.demo;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 
 // error en la sintaxis, click izquierdo para las sugerencias (En este caso era el Import)
 @Controller

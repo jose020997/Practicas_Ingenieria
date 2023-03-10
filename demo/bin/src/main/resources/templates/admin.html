@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+            <br>
+                <h1 class="text-center">Lista de User</h1>
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>Username</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user : ${lista_usuarios}">
+                            <td th:text="${user.getNombre()}"></td>
+                            <td th:text="${user.getPass()}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br><br>
+            </div>
+            <div class="col-md-6">
+            <br>
+                <h1 class="text-center">Otra parte para algo</h1>
+                <br>
+                <!-- Porque es una tabla muy grande -->
+                <th:block th:if="${nombre != null}">
+                	<p  class="text-warning" th:text="${'la cuenta que usas para acceder es : '+ nombre}"></p>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
