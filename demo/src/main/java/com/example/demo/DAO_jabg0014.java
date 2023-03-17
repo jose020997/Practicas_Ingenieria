@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public class DAO_jabg0014 implements ServicioJabg0014Interface {
     private List<Userlogin> users;
     private boolean isAdmin;
