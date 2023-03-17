@@ -32,5 +32,5 @@ public class DAO_jabg0014_BD implements ServicioJabg0014Interface
 		List<Userlogin> usuarios = this.jdbctemplate.query(sql, mapper);
 		return usuarios;
 	}
-	 
+	 //Implementar con el dato es_user
 }
