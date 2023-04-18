@@ -31,14 +31,16 @@
           <label for="contraseña">Contraseña:</label>
           <input type="password" class="form-control" id="contraseña" name="contraseña">
         </div>
-        <div class="form-group">
-          <label for="confirmacion_contraseña">Confirmación de contraseña:</label>
-          <input type="password" class="form-control" id="confirmacion_contraseña" name="confirmacion_contraseña">
-        </div><br>
         <button type="submit" class="btn btn-primary">Aceptar</button>
       </form>
     </div>
   </div>
+  <th:block th:if="${exist == true}">
+	<div class="alert alert-dismissible alert-danger">
+	<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+	<strong>El usuario existe</strong>
+	</div>
+  </th:block>
   <br><br><br><br>
 </div>
    <div class="col-md-4">

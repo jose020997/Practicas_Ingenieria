@@ -16,12 +16,14 @@
                         <tr class="table-primary">
                             <th>Username</th>
                             <th>Name</th>
+                            <th>Permisos</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="usuario : ${lista_usuarios}">
                             <td th:text="${usuario.getNombre()}"></td>
                             <td th:text="${usuario.getPass()}"></td>
+                            <td th:text="${usuario.getEs_user() == 1 ? 'root' : 'user'}"></td>
                         </tr>
                     </tbody>
                 </table>

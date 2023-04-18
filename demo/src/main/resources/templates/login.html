@@ -25,10 +25,16 @@
 
 					</form>
 					<br>
-					<th:block th:if="${exist == false}">
+					<th:block th:if="${exist == 1}">
 						<div class="alert alert-dismissible alert-danger">
 						  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 						  <strong>Usuario no registrado!</strong><a th:href="@{/registro.html}" class="alert-link">     Si quiere registrarse pinche aqui!</a>
+						</div>
+					</th:block>
+					<th:block th:if="${exist == 2}">
+						<div class="alert alert-dismissible alert-danger">
+						  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+						  <strong>contraseña incorrecta!</strong>
 						</div>
 					</th:block>
 				</div>
