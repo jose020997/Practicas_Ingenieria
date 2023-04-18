@@ -11,8 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-//Cambiar la parte de root que solo cambia los datos cuando actualizas la pagina
-//Si la contraseña no coincide que salta otro error
+//Añadir por las cookies
 
 @Controller
 public class HomeController_jabg0014 {
