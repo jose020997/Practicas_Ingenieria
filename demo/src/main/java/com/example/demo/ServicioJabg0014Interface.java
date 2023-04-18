@@ -6,6 +6,6 @@ import java.util.List;
 public interface ServicioJabg0014Interface {
 	public List<Userlogin> getAllUsers();
 //	public void addUser(Userlogin user);
-//	public boolean checkuser(String username,String pass);
+	public Userlogin checkuser(String username,String pass);
 	
 }

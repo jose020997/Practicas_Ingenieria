@@ -32,5 +32,20 @@ public class DAO_jabg0014_BD implements ServicioJabg0014Interface
 		List<Userlogin> usuarios = this.jdbctemplate.query(sql, mapper);
 		return usuarios;
 	}
-	 //Implementar con el dato es_user
+	 
+	 private final RowMapper<Userlogin> mapper2 = (rs,numRow) -> {
+		 Userlogin usuario = new Userlogin();
+			usuario.setNombre(rs.getString("nombre"));
+			usuario.setPass(rs.getString("correo"));
+			usuario.setEs_user(rs.getInt("es_user"));
+			return usuario;
+			};
+		
+		
+	public Userlogin checkuser(String nombre,String correo) {
+		String sql = "select * from user where nombre = ? and correo=?";
+		List<Userlogin> usuarios = this.jdbctemplate.query(sql, mapper2, nombre,correo);
+		if (usuarios.isEmpty()) return null;
+		else return usuarios.get(0);
+	}
 }

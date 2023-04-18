@@ -3,6 +3,7 @@ package com.example.demo;
 public class Userlogin {
 	private String name;
     private String pass;
+    private int es_user;
     
     // Constructor
     public Userlogin(String name, String pass) {
@@ -31,4 +32,12 @@ public class Userlogin {
     public void setPass(String pass) {
         this.pass = pass;
     }
+
+	public int getEs_user() {
+		return es_user;
+	}
+
+	public void setEs_user(int es_user) {
+		this.es_user = es_user;
+	}
 }

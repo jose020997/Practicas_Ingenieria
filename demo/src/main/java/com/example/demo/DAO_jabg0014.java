@@ -1,4 +1,4 @@
-package com.example.demo;
+/*package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,4 +40,4 @@ public class DAO_jabg0014 implements ServicioJabg0014Interface {
     	}
     }
    
-}
+}*/
