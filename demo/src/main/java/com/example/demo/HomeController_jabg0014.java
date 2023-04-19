@@ -26,8 +26,22 @@ public class HomeController_jabg0014 {
 	
 	@GetMapping("/login")
 	//Añadir lo de la cookie
-		public String metodoinicio() {
+		public String metodoinicio(HttpSession sesion, Model model) {
+		Userlogin user = (Userlogin) sesion.getAttribute("user");
+		String name = (String) sesion.getAttribute("name");
+		if(user == null) {
 			return "login";
+		}
+		else {
+			if(user.getEs_user() == 1) {
+				model.addAttribute("lista_usuarios", dao.getAllUsers());
+				return "admin";
+			}
+			else {
+				model.addAttribute("usuario", name);
+				return "articulos";
+			}
+		}
 	}
 
 	
@@ -42,12 +56,13 @@ public class HomeController_jabg0014 {
 	    if (usuario != null) {
 	    	 if(usuario.getEs_user() == 1) {
 	    		 model.addAttribute("lista_usuarios", dao.getAllUsers());
-	 	    	 sess.setAttribute("nam_user", name);
+	 	    	 sess.setAttribute("user", usuario);
 	    		 return "admin"; 
 	    	 }
 	    	 else {
 	    		 model.addAttribute("usuario", name);
-		         sess.setAttribute("nam_user", name);
+	    		 sess.setAttribute("name", name);
+		         sess.setAttribute("user", usuario);
 	    		 return "articulos";
 	    	 }
 	    }
