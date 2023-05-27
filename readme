@@ -32,3 +32,7 @@ En esta sesión se incluirán botones del sistema PayPal, de forma que en la vis
 cada uno tendrá asociado un botón para hacer el pago individual o para incluirlo en el “Carro
 de la compra” gestionado por PayPal, que permitan hacer el pago mediante las cuentas de
 Sandbox de PayPal. 
+
+Datos de Interes
+
+Para el acceso a la primera parte del proyecto, tendremos que introducir localhost:8082/login
