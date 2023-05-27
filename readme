@@ -1,0 +1,34 @@
+SESIÓN 1.
+
+Se pretende implementar un proceso de login de usuarios en un portal online
+donde se mostrará una serie de artículos. Para ello se seguirán los siguientes pasos:
+1) Implementar una vista de forma que, al abrir una url en el navegador (p.e. /login),
+ofrezca un formulario HTML pidiendo un nombre de usuario y contraseña.
+2) En caso de que el usuario y contraseña coincida con un usuario registrado en el portal,
+se ofrecerá una vista con una serie de artículos. En caso contrario, se indicará que no
+está registrado. Para esta comprobación se usará una clase DAO de test, sin necesidad
+de conectarse a una base de datos real.
+3) Por otra parte, se debe usar una sesión HTTP de tal manera que, si un usuario ya se ha
+identificado de forma correcta, la aplicación se salte el proceso de login si la sesión
+sigue activa.
+4) Para la implementación de la vista con los artículos se recomienda usar una plantilla de
+Bootstrap o similar (como ejemplo, se puede partir de la disponible en
+https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_store). Esta
+vista debe incluir que se visualice en algún lugar el nombre del usuario.
+5) Se ha de definir un usuario especial (administrador) de forma que si se identifica
+correctamente en el login, en lugar de los artículos se le ofrecerá en la vista una tabla
+con los usuarios registrados. Igual que en el punto 2, se usará una clase DAO de test.
+
+SESIÓN 2. INTEGRACIÓN DE BASE DE DATOS MYSQL.
+
+Se ha de incorporar una base de datos relacional MySQL a la aplicación de la
+Sesión anterios. Para ello se pide diseñar una tabla en una base de datos MySQL e implementar una
+clase DAO que opere sobre dicha tabla. Este DAO será el usado por la aplicación, en lugar del
+DAO de test, usando inyección de dependencias.
+
+SESIÓN 3. USO DEL SISTEMA DE PAGO PAYPAL.
+
+En esta sesión se incluirán botones del sistema PayPal, de forma que en la vista de artículos
+cada uno tendrá asociado un botón para hacer el pago individual o para incluirlo en el “Carro
+de la compra” gestionado por PayPal, que permitan hacer el pago mediante las cuentas de
+Sandbox de PayPal. 
